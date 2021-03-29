@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="">
+
+  <script type="text/javascript">
+    function updateOrder() {
+      const TAXRATE = 0.50;
+      const PRICE = 5;    // Hotdog Bun and Burger Patty price
+      document.getElementById("name").value
+      var numHotdogBun = parseInt(document.getElementById("hotdogbun").value);
+      var numBurgerPatty = parseInt(document.getElementById("burgerpatty").value);
+      if (isNaN(numHotdogBun))
+        numHotdogBun = 0;
+      if (isNaN(numBurgerPatty))
+        numBurgerPatty = 0;
+      if (document.getElementById("name").value =="") 
+      alert("I am so sorry but you must provide your name berfore submitting an order.");
+
+      if (document.getElementById("pickupminutes").value = "" || isNaN(document.getElementById("pickupminutes").value))
+      alert("I'm sorry but you must provide the number of minutes until pick up" + "before submitting an order" );
+
+      else 
+        // Submit the order to the server
+        form.submit();
+    
+
+      var subTotal = (numHotdogBun + numBurgerPatty) * PRICE;
+      var tax = subTotal * TAXRATE;
+      var total = subTotal + tax;
+      document.getElementById("subtotal").value = "$" + subTotal.toFixed(2);
+      document.getElementById("tax").value = "$" + tax.toFixed(2);
+      document.getElementById("total").value = "$" + total.toFixed(2);
+    }
+
+
+  </script>
+  <title>Jade's Hotdog & Burger | The Best Hotdog and Burger in the World</title>
+</head>
+<body>
+  <div class="form-box">
+    <form action="" name="orderform" method="POST">
+
+      <div>
+        Name: <input type="text" id="name" name="name" value="">
+      </div>
+
+      <div>
+        Number of hotdog bun: <input type="text" id="hotdogbun" name="hotdogbun" value="" onchange="updateOrder()" >
+      </div>
+
+      <div>
+        Number of burger patty: <input type="text" id="burgerpatty" name="burgerpatty" value="" onchange="updateOrder()">
+      </div>
+
+      <div>
+        Pick up minutes: <input type="text" id="pickupminutes" name="pickupminutes" value="" onchange="updateOrder()">
+      </div>
+
+      <div class="field">
+        Subtotal: <input type="text" name="subtotal" id="subtotal" value="">
+      </div>
+      <div class="field">
+        Tax: <input type="text" name="tax" id="tax" value="">
+      </div>
+      <div class="field">
+        Total: <input type="text" name="total" id="total" value="">
+      </div>
+
+      <div class="field">
+        <input type="button" value="Place Order" onclick="placeOrder(this.form);">
+      </div>
+
+      
+    </form>
+  </div>
+  
+</body>
+</html>
